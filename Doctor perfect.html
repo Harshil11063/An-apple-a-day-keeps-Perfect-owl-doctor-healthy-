@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wellness for Khatu (aka Nehali) | Perfect Doctor 💖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet" />
+<style>
+  /* --- Color and Variable Definitions --- */
+  :root {
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --primary-text: #3c3c3c;
+    --heading-text: #1a1a1a;
+    --accent-color: #4CAF50; /* Primary Green */
+    --soft-green: #e8f5e9;
+    --border-color: #c8e6c9;
+    --button-bg: #81C784;
+    --button-hover-bg: #66BB6A;
+    --anemia-color: #FF9800; /* Orange */
+    --pms-color: #E91E63; /* Pink */
+    --mental-color: #2196F3; /* Blue */
+    --schedule-color: #4DD0E1; /* Cyan for Schedule */
+    --boredom-color: #795548; /* Brown for Night time */
+  }
+
+  /* --- Base and Mobile-First Layout (9:16 Focus) --- */
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: 'Raleway', sans-serif;
+    background: linear-gradient(to bottom right, #f0fdf4, #ccffcb); 
+    margin: 0;
+    color: var(--primary-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  /* Main wrapper to enforce max width on larger screens */
+  main {
+    max-width: 1100px;
+    width: 100%;
+    padding: 15px;
+    padding-top: 0; /* Nav handles top spacing */
+  }
+
+  /* Header and Title */
+  header {
+    text-align: center;
+    margin: 20px 0 10px;
+    width: 100%;
+    padding: 0 15px;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--heading-text);
+    margin: 0;
+    line-height: 1.2;
+  }
+  header p {
+    font-size: 0.9rem;
+    color: var(--heading-text);
+    margin: 5px 0 0;
+  }
+
+  /* Navigation Bar (Sticky and Scrollable for 7 pages) */
+  .navbar {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .nav-list {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+  .nav-list::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
+  }
+  .nav-list li a {
+    display: block;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: var(--heading-text);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-bottom: 3px solid transparent;
+  }
+  .nav-list li a.active {
+    background-color: var(--soft-green);
+    color: var(--accent-color);
+    border-bottom: 3px solid var(--accent-color);
+  }
+
+  /* Content Card Styling */
+  .page-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 15px;
+  }
+  .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+  }
+  .card h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--heading-text);
+    margin-top: 0;
+    border-bottom: 2px solid var(--soft-green);
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+  }
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 10px 0;
+  }
+  .card p, .card ul, .card li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  /* Boredom Busters Specific Styling */
+  #boredom-busters h2 {
+    color: var(--boredom-color);
+    border-bottom: 2px solid #D7CCC8;
+  }
+  .boredom-section {
+    margin-top: 15px;
+    border-left: 3px solid var(--boredom-color);
+    padding-left: 10px;
+  }
+  .boredom-section p {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+  }
+  .boredom-section strong {
+    color: var(--boredom-color);
+  }
+
+  /* Symptom Checker */
+  .symptom-option {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fff;
+    cursor: pointer;
+    margin-bottom: 5px;
+    transition: background-color 0.1s;
+  }
+  .symptom-option input[type="checkbox"] { margin-right: 10px; transform: scale(1.2); }
+  
+  #checker-feedback {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  .status-great { background-color: #E8F5E9; color: #388E3C; border: 2px solid #A5D6A7; }
+  .status-good { background-color: #FFFDE7; color: #FFB300; border: 2px solid #FFE082; }
+  .status-needs-rest { background-color: #FBEFF2; color: #D81B60; border: 2px solid #F48FB1; }
+  .status-rough { background-color: #FBE9E7; color: #E53935; border: 2px solid #FFCDD2; }
+  
+  /* Tables */
+  .health-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+  .health-table th, .health-table td { padding: 10px; border: 1px solid #e0f2f1; font-size: 0.9rem; }
+
+  /* Tools */
+  .btn {
+    background: var(--button-bg);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(76, 175, 80, 0.4);
+    transition: background-color 0.2s ease;
+  }
+  .btn-group { display: flex; gap: 10px; margin-top: 15px; justify-content: center;}
+
+  /* Desktop/Tablet view adjustments (optional) */
+  @media(min-width: 768px) {
+    main {
+      padding: 25px;
+      padding-top: 0;
+    }
+    .page-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    .full-width {
+      grid-column: 1 / -1;
+    }
+    .card {
+        padding: 25px;
+    }
+    header h1 { font-size: 2.5rem; }
+    .nav-list { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p id="time-of-day-greeting">Wishing you a day filled with energy and peace!</p>
+  <h1>Wellness for Khatu (aka Nehali) | Perfect Doctor 💖</h1>
+  <p>Dedicated to your health, happiness, and college success!</p>
+</header>
+
+<nav class="navbar">
+  <ul class="nav-list">
+    <li><a href="#welcome-page" class="nav-link active" data-page="welcome-page">Welcome</a></li>
+    <li><a href="#anemia-page" class="nav-link" data-page="anemia-page">Anemia Guide</a></li>
+    <li><a href="#pms-page" class="nav-link" data-page="pms-page">PMS Guide</a></li>
+    <li><a href="#checker-page" class="nav-link" data-page="checker-page">Symptom Check</a></li>
+    <li><a href="#schedule-page" class="nav-link" data-page="schedule-page">Weekly Planner</a></li>
+    <li><a href="#mental-page" class="nav-link" data-page="mental-page">Mental Care</a></li>
+    <li><a href="#tools-page" class="nav-link" data-page="tools-page">Daily Tools</a></li>
+  </ul>
+</nav>
+
+<main>
+    <div id="welcome-page" class="page-section active full-width">
+        <section class="card full-width">
+            <h2>Your Daily Dose of Sweetness 💛</h2>
+            <div id="daily-sweet-word">Loading...</div>
+            <p style="margin-top: 15px;">Welcome! This hub is designed to support your energy, manage symptoms, and align with your busy college life.</p>
+        </section>
+    </div>
+
+    <div id="anemia-page" class="page-section full-width" style="display: none;">
+        <section class="card">
+            <h2>Anemia: Symptoms & Features</h2>
+            <p>**Focus:** Restoring Iron and Vitamin B12 levels for sustained energy.</p>
+            <table class="health-table anemia">
+                <tr><th>Core Symptoms</th><td>Chronic Fatigue, Paleness, Dizziness, Rapid Heartbeat.</td></tr>
+                <tr><th>Dietary Feature</th><td>**Iron-rich veg** (Spinach, Lentils, Tofu, Chickpeas) + **Vitamin C** (Lemon, Orange) for maximum absorption.</td></tr>
+            </table>
+        </section>
+        
+        <section class="card">
+            <h2>Anemia: Cures & Management</h2>
+            <table class="health-table anemia">
+                <tr><th>Primary Cure</th><td>**Prescribed Oral Iron Supplements** (e.g., Ferrous Fumarate) taken consistently.</td></tr>
+                <tr><th>B12 Cure</th><td>If Pernicious Anemia, **B12 Injections** are necessary. Otherwise, fortified foods/oral tablets.</td></tr>
+                <tr><th>Tip</th><td>Take Iron supplements *at least* 1 hour away from dairy, coffee, or calcium tablets.</td></tr>
+            </table>
+        </section>
+    </div>
+
+    <div id="pms-page" class="page-section full-width" style="display: none;">
+        <section class="card">
+            <h2>PMS: Symptoms & Features</h2>
+            <p>**Focus:** Reducing inflammation, balancing mood, and managing fluid retention.</p>
+            <table class="health-table pms">
+                <tr><th>Core Symptoms</th><td>Irritability, Anxiety, Bloating, Breast Tenderness, Headaches.</td></tr>
+                <tr><th>Nutritional Feature</th><td>High intake of **Magnesium** (dark chocolate, pumpkin seeds), **Calcium** (dairy, tofu), and **B6** (bananas, potatoes).</td></tr>
+            </table>
+        </section>
+        
+        <section class="card">
+            <h2>PMS: Cures & Management</h2>
+            <table class="health-table pms">
+                <tr><th>Primary Relief</th><td>Consistent daily **Aerobic Exercise** (brisk walking, cycling) is a proven mood-booster.</td></tr>
+                <tr><th>Dietary Relief</th><td>Reduce **Salt, Caffeine, and Alcohol** in the week before your cycle to minimize bloating and mood swings.</td></tr>
+                <tr><th>Medical Option</th><td>For severe symptoms (PMDD), **SSRIs** or **Hormonal Birth Control** can offer significant relief. Consult a doctor.</td></tr>
+            </table>
+        </section>
+    </div>
+
+    <div id="checker-page" class="page-section full-width" style="display: none;">
+        <section class="card full-width">
+            <h2>Advanced Daily Symptom Check-in 🌟</h2>
+            <p>Tick all that apply. This provides customized advice based on your current physical and emotional state.</p>
+            <form id="symptom-checker-form">
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="fatigue_extreme"> Extreme Fatigue/Exhaustion (Anemia Flag)</label>
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="low_mood"> Persistent Low Mood / Sadness</label>
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="anxiety_high"> High Anxiety or Restlessness</label>
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="pica"> Craving Ice or Non-food Items (Pica - Anemia Flag)</label>
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="irritability"> Severe Irritability / Short Fuse (PMS/PMDD Flag)</label>
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="headache"> Cyclical Headaches or Migraines</label>
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="bloating_severe"> Significant Bloating or Swelling</label>
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="sleep_poor"> Poor Sleep Quality / Insomnia</label>
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="palpitations"> Heart Palpitations or Rapid Heartbeat (Anemia Flag)</label>
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="cramps"> Moderate to Severe Menstrual Cramps</label>
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="joint_pain"> Body Aches or Joint Pain</label>
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="brain_fog"> Trouble Concentrating / Brain Fog</label>
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="digestion"> Digestive issues (Gas/Constipation)</label>
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="zero_motivation"> Feeling Zero Motivation to move or start tasks</label>
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="low_energy"> Feeling just 'low energy' (not extreme fatigue)</label>
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="sore_breasts"> Breast Tenderness</label>
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="restful"> Felt Restful after sleep</label>
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="hydrated"> Feel well-hydrated</label>
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="focused"> Feeling focused and alert</label>
+                <label class="symptom-option"><input type="checkbox" name="symptom" value="positive"> Overall feeling positive/optimistic</label>
+                <label class="symptom-option" style="background-color: #d1f4d2;"><input type="checkbox" name="symptom" value="none"> **Feeling Great / None of the above!**</label>
+                <button type="button" class="btn" onclick="checkSymptoms()">Get My Personalized Status & Cure</button>
+            </form>
+            <div id="checker-feedback">Click 'Get My Status' to check in!</div>
+        </section>
+    </div>
+
+    <div id="schedule-page" class="page-section full-width" style="display: none;">
+        <section class="card full-width">
+            <h2>Weekly College & Wellness Planner 🗓️</h2>
+            <p>Schedule built around your **6 AM to 5 PM college commitment** (Monday to Friday). Focus on iron, hydration, and gentle movement!</p>
+            <div style="overflow-x: auto;">
+                <table id="weekly-schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>M-F (College)</th>
+                            <th>Saturday</th>
+                            <th>Sunday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="schedule-day">5:30 AM</td>
+                            <td class="schedule-food">**Pre-College Fuel:** Water + 2 Soaked Almonds. Small bowl of poha or upma. (Avoid heavy food)</td>
+                            <td class="schedule-food">**Power Breakfast:** Iron-rich Dosa (fermented for absorption) with coconut chutney.</td>
+                            <td class="schedule-food">**Leisurely:** Protein-rich (Paneer/Tofu Scramble) + Whole-wheat toast.</td>
+                        </tr>
+                        <tr>
+                            <td class="schedule-day">6 AM - 5 PM</td>
+                            <td class="schedule-college" colspan="3">**COLLEGE HOURS** (Focus & Hydration are key). Carry a bottle and sip constantly.</td>
+                        </tr>
+                        <tr>
+                            <td class="schedule-day">10:00 AM</td>
+                            <td class="schedule-food">**College Snack:** Banana + small handful of Chana or roasted seeds. (**Vitamin C** source).</td>
+                            <td class="schedule-exercise" colspan="2">**Movement:** 45 mins Brisk Walk / Light Aerobics or cycling (PMS mood boost).</td>
+                        </tr>
+                        <tr>
+                            <td class="schedule-day">1:00 PM</td>
+                            <td class="schedule-food">**College Lunch:** Whole-grain Roti, Dal/Chhole, and a Green Veg (Palak, Methi, or Sarson). <span style="color: red;">*No tea/coffee for 2 hours.*</span></td>
+                            <td class="schedule-food" colspan="2">**Balanced Lunch:** Rajma or Chhole with Brown Rice/Roti and raita (Calcium).</td>
+                        </tr>
+                        <tr>
+                            <td class="schedule-day">5:30 PM</td>
+                            <td class="schedule-food">**Recovery:** Curd (Dahi) or Lassi (Calcium/Magnesium for PMS) + Fruit. Wait 1 hour for Iron tabs.</td>
+                            <td class="schedule-food" colspan="2">**Tea/Snack:** Herbal Tea (Chamomile for PMS) and a light savory snack.</td>
+                        </tr>
+                        <tr>
+                            <td class="schedule-day">6:30 PM</td>
+                            <td class="schedule-exercise">**Movement:** 20-30 mins **Gentle Stretching** or **Yoga** (essential stress relief).</td>
+                            <td class="schedule-exercise">**Activity:** 45 mins Fun/Intense Exercise (Dance, Sport, Gym) (Releases tension).</td>
+                            <td class="schedule-exercise">**Mindfulness:** 30 mins Deep Breathing or Meditation.</td>
+                        </tr>
+                        <tr>
+                            <td class="schedule-day">8:30 PM</td>
+                            <td class="schedule-food">**Dinner:** Light & early. Vegetable Khichdi or soup with Tofu/Paneer. (Aids restful sleep).</td>
+                            <td class="schedule-food" colspan="2">**Dinner:** Balanced, warm meal. Lentil soup, veg curry, and whole grains.</td>
+                        </tr>
+                        <tr>
+                            <td class="schedule-day">9:30 PM</td>
+                            <td class="schedule-exercise" colspan="3">**Wind-Down:** Journaling (mood tracking), Reading, Digital Detox. Prepare for 7-8 hours of sleep.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <div id="mental-page" class="page-section full-width" style="display: none;">
+        <section class="card">
+            <h2>Mental Wellness: Symptoms & Management</h2>
+            <p>Your mind and body are connected. Prioritizing rest helps nutrient absorption.</p>
+            <table class="health-table mental">
+                <tr><th>Core Signs</th><td>Emotional exhaustion, Loss of joy (Anhedonia), Difficulty relaxing.</td></tr>
+                <tr><th>Key Tool</th><td>**CBT (Cognitive Behavioral Therapy)** techniques to reframe negative thought patterns.</td></tr>
+            </table>
+        </section>
+        
+        <section class="card">
+            <h2>Mind-Body Cures & Tips</h2>
+            <table class="health-table mental">
+                <tr><th>Stress Cure</th><td>**3x3 Rule:** 3 deep, slow breaths, 3 times a day.</td></tr>
+                <tr><th>Anxiety Relief</th><td>Use the Pomodoro break time for a **"Grounding Exercise"** (Name 5 things you see, 4 you feel, 3 you hear, 2 you smell, 1 you taste).</td></tr>
+                <tr><th>Fatigue Loop</th><td>Acknowledge that **physical rest is mandatory** when Anemia flares. Lower your expectations for those days.</td></tr>
+            </table>
+        </section>
+    </div>
+
+    <div id="tools-page" class="page-section full-width" style="display: none;">
+        
+        <section class="card full-width" id="boredom-busters">
+            <h2>When You Get Bored, Even at 12 Night 🌙</h2>
+            <p>When you're restless late at night, choose an activity that matches your mood, not your screen time!</p>
+            
+            <div class="boredom-section">
+                <h3>If you feel **STRESSED/ANXIOUS**:</h3>
+                <p>**Book Recommendation:** *Bhagavad Gita* (or any short philosophical text). Focus on one passage for 10 minutes. (Calm)</p>
+                <p>**Activity:** **Gentle hand stretches** or **Mantra coloring** (repetitive, mindful action).</p>
+                <p>**Music:** Slow classical music (e.g., Debussy) or **Delta Waves** for sleep.</p>
+            </div>
+            
+            <div class="boredom-section">
+                <h3>If you feel **LOW/SAD** (Mental Care needed):</h3>
+                <p>**Book Recommendation:** An uplifting, gentle poetry collection or a short book on **gratitude journaling**.</p>
+                <p>**Activity:** Write down **5 things you accomplished today** (even tiny ones). Don't judge them, just list them.</p>
+                <p>**Music:** Acoustic covers of popular songs or **Lofi Hip-Hop** (soothing background noise).</p>
+            </div>
+            
+            <div class="boredom-section">
+                <h3>If you feel **RESTLESS/ENERGIZED** (Need to wind down):</h3>
+                <p>**Book Recommendation:** A light, engaging fiction book (like a cozy mystery) to distract the brain without intense focus.</p>
+                <p>**Activity:** **Plan the next day's schedule** (using the planner page). Lay out your clothes for the morning. (Productive, non-stressful prep).</p>
+                <p>**Music:** **Ambient nature sounds** (rain, ocean) or simple instrumental jazz.</p>
+            </div>
+        </section>
+        
+        <section class="card">
+            <h2>Focus & Recovery Timer (Pomodoro) 🍅</h2>
+            <p>Dedicated 25 minutes for a task, followed by 5 mins of mindful rest.</p>
+            <div id="pomodoro-timer" style="display: flex; flex-direction: column; align-items: center;">
+                <div id="timer-display" style="font-size: 2.5rem;">25:00</div>
+                <input type="text" id="pomodoro-task" placeholder="Task: Deep breathing, Iron-rich snack, or College assignment." style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px;">
+                <div class="btn-group">
+                    <button id="start-btn" class="btn">Start</button>
+                    <button id="pause-btn" class="btn" style="display: none;">Pause</button>
+                    <button id="reset-btn" class="btn">Reset</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Hydration Tracker 💧</h2>
+            <p>Aim for 8 glasses, especially during college hours to combat fatigue.</p>
+            <div style="text-align: center;">
+                <h3 style="color: var(--mental-color);">Glasses Consumed: <span id="water-count">0</span></h3>
+                <p id="water-message" style="font-weight: 600;">Start sipping!</p>
+                <div class="btn-group">
+                    <button class="btn" onclick="addWater()">Add 1 Glass</button>
+                    <button class="btn" style="background-color: #FF7043;" onclick="resetWater()">Reset</button>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<script>
+    // ===================================
+    // GLOBAL DATA AND UTILITIES
+    // ===================================
+    
+    // Calculates a daily index for quote rotation
+    const getDayOfYear = () => {
+        const now = new Date();
+        const start = new Date(now.getFullYear(), 0, 0);
+        const diff = now - start;
+        const oneDay = 1000 * 60 * 60 * 24;
+        return Math.floor(diff / oneDay);
+    };
+
+    // --- Expanded Sweet Words Array (60+ entries) ---
+    const sweetWordsArray = [
+        "Your dedication to self-care is the most beautiful thing you’ll do today. Keep going.",
+        "May your energy levels be strong and your thoughts be gentle.",
+        "Remember that calm is a superpower, and you are its masterful wielder.",
+        "You are worthy of the same kindness and compassion you give so freely to others.",
+        "Today is a fresh page. Let's make the first entry 'rest' and 'recharge'.",
+        "Your strength isn't just in what you handle, but in how beautifully you pause to breathe.",
+        "The world is a better place with your focus and light. Go conquer your day, gently.",
+        "Just a reminder: you are truly, deeply appreciated for everything you do.",
+        "May your supplements absorb perfectly today, and your patience be infinite.",
+        "Happiness looks gorgeous on you. Don't leave home without it.",
+        "Sending you a virtual blanket of comfort for any stress the day might bring.",
+        "Your wellness is non-negotiable. Treat it with the respect it deserves today.",
+        "Every small, healthy choice you make is a victory. Celebrate them all!",
+        "May your hormones be in perfect alignment, bringing you peace and clarity.",
+        "You inspire more people than you know, simply by being your dedicated self.",
+        "Take a moment right now. Breathe deeply. You are safe. You are loved.",
+        "Your commitment to health is admirable. Keep nurturing your incredible self.",
+        "Wishing you clarity of mind and lightness of body throughout this day.",
+        "The most powerful medicine you have is self-care. Use it generously.",
+        "Let your inner strength be the energy source that powers your beautiful goals.",
+        "If you can feel it, you can heal it. Acknowledge your body's needs today.",
+        "Today’s mission: Hydrate, rest, and remember how extraordinary you are.",
+        "You have the resilience of a warrior and the gentleness of a healer.",
+        "May your coffee be strong and your motivation stronger (but your rest stronger still).",
+        "A little progress each day adds up to big results. Be proud of where you are.",
+        "Don't let the fatigue win the day. Schedule your rest like it's the most important meeting.",
+        "You are a force of nature—powerful, beautiful, and constantly renewing.",
+        "Let go of what you can't control, and focus on the beautiful things you can create.",
+        "Be patient with yourself. Healing takes time, and you are right on track.",
+        "Your emotional well-being is precious. Guard it fiercely today.",
+        "May today be free of unnecessary worries and full of quiet victories.",
+        "Wishing you a day where your symptoms are mild and your smiles are bright.",
+        "Remember: Being gentle with yourself is the highest form of self-respect.",
+        "You deserve peace, not pressure. Choose peace today.",
+        "Let your heart be your guide, and your well-being your priority.",
+        "Small steps are still movement. Celebrate the tiny victories!",
+        "May the light within you shine brighter than any symptom today.",
+        "Your presence is a gift. Never doubt your immense worth.",
+        "Healing is not linear. Be proud of where you are on your unique path.",
+        "You are loved more than words can say. Carry that truth with you.",
+        "Today, let go of perfectionism and embrace radical self-acceptance.",
+        "Your college work is important, but your health is essential. Balance, beloved!",
+        "Sending you a surge of Iron and inner peace for a productive day.",
+        "You are strong enough to ask for help, and wise enough to take a break.",
+        "The world needs your beautiful mind well-rested and nourished.",
+        "Breathe. You have all the time you need for the things that truly matter.",
+        "Rest is not a reward; it is a vital part of your process.",
+        "Let the sweet rhythm of nature guide your pace today.",
+        "May your day be filled with unexpected moments of joy and calm.",
+        "You are your own perfect doctor. Listen closely to your brilliant body.",
+        "Remember yesterday's wisdom, but live fully in today's gentle moment.",
+        "Your spirit is resilient. Let it guide you through any challenge.",
+        "The love you seek is already within you. Tap into that boundless energy.",
+        "Wishing you a day where every cell in your body feels energized and happy.",
+        "You are an absolute masterpiece. Treat yourself as such.",
+        "Today’s mantra: 'I am enough. I am strong. I am loved.'",
+        "May you find strength in quiet moments and focus in the chaos.",
+        "Your journey is inspiring. Keep sharing your light, beautifully.",
+        "Embrace the pause. It is where your greatest power resides.",
+        "May your water intake be perfect and your mood uplifted.",
+        "You have handled so much with grace. Today, let grace handle you.",
+    ];
+
+    // ===================================
+    // NAVIGATION & INITIALIZATION
+    // ===================================
+    document.addEventListener('DOMContentLoaded', () => {
+        // Set the Daily Sweet Word
+        const dailyIndex = getDayOfYear() % sweetWordsArray.length;
+        document.getElementById('daily-sweet-word').innerText = sweetWordsArray[dailyIndex];
+        
+        const pages = document.querySelectorAll('.page-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const initialPageId = 'welcome-page';
+
+        function showPage(pageId) {
+            pages.forEach(page => {
+                page.style.display = 'none';
+            });
+            const activePage = document.getElementById(pageId);
+            if (activePage) {
+                activePage.style.display = 'flex'; // Use flex for column layout
+            }
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+            });
+        });
+
+        // Initialize the first page
+        showPage(initialPageId);
+    });
+
+    // ===================================
+    // ADVANCED SYMPTOM CHECKER LOGIC (Retained)
+    // ===================================
+    function checkSymptoms() {
+        const form = document.getElementById('symptom-checker-form');
+        const feedbackDiv = document.getElementById('checker-feedback');
+        const symptoms = Array.from(form.querySelectorAll('input[name="symptom"]:checked')).map(cb => cb.value);
+        
+        feedbackDiv.className = '';
+        let statusMessage = "";
+        let statusClass = "";
+        let advice = [];
+        
+        let severityScore = 0;
+        
+        const highSeverity = ['fatigue_extreme', 'pica', 'palpitations', 'irritability', 'anxiety_high', 'low_mood', 'zero_motivation'];
+        highSeverity.forEach(s => {
+            if (symptoms.includes(s)) severityScore += 2;
+        });
+
+        const mediumSeverity = ['headache', 'bloating_severe', 'sleep_poor', 'cramps', 'joint_pain', 'brain_fog', 'digestion', 'low_energy', 'sore_breasts'];
+        mediumSeverity.forEach(s => {
+            if (symptoms.includes(s)) severityScore += 1;
+        });
+
+        const positiveModifiers = ['restful', 'hydrated', 'focused', 'positive'];
+        positiveModifiers.forEach(s => {
+            if (symptoms.includes(s)) severityScore -= 1;
+        });
+
+        if (symptoms.includes('none') || severityScore <= -1) {
+            statusMessage = "Status: GREAT! ✨ Your wellness is thriving. Maintain the habits that brought you here!";
+            statusClass = "status-great";
+            advice.push("Cure: None needed! Continue your gentle exercise, hydration, and iron-rich diet.");
+        } else if (severityScore === 0) {
+            statusMessage = "Status: GOOD! 😊 You're stable today. A small proactive measure can keep you strong.";
+            statusClass = "status-good";
+            advice.push("Cure: Drink an extra glass of water and have an iron-friendly snack (like an apple).");
+        } else if (severityScore >= 1 && severityScore <= 3) {
+            statusMessage = "Status: NEEDS REST. ☕ Pay attention to your body's signals. You have some medium-level fatigue or emotional strain.";
+            statusClass = "status-needs-rest";
+            if (symptoms.includes('low_energy') || symptoms.includes('low_mood')) {
+                advice.push("Cure: Take 15 minutes for **deep breathing** or a short **guided meditation** today.");
+            }
+            if (symptoms.includes('sore_breasts') || symptoms.includes('bloating_severe')) {
+                advice.push("Cure: Increase Magnesium (pumpkin seeds) and reduce salt intake tonight.");
+            }
+            advice.push("Cure: Plan for 8 hours of sleep tonight. No screens after 9:30 PM.");
+        } else { // severityScore >= 4
+            statusMessage = "Status: ROUGH DAY. 💔 Be incredibly kind to yourself. Your body is asking for immediate, deep care.";
+            statusClass = "status-rough";
+            if (symptoms.includes('fatigue_extreme') || symptoms.includes('palpitations') || symptoms.includes('pica')) {
+                advice.push("Cure: **ANEMIA ALERT:** Prioritize rest. Ensure you've taken your **Iron/B12 supplement** away from calcium. Contact your doctor if severe symptoms persist.");
+            }
+            if (symptoms.includes('irritability') || symptoms.includes('anxiety_high')) {
+                advice.push("Cure: **PMS/PMDD ALERT:** Do not engage in arguments. Step away, use a cold compress on your forehead, and plan a light walk for 20 minutes.");
+            }
+            advice.push("Cure: Simplify your schedule. Drop one non-essential college task today. It's okay to slow down.");
+        }
+
+        feedbackDiv.innerHTML = `
+            <p>${statusMessage}</p>
+            ${advice.length > 0 ? '<h3>Immediate Steps:</h3><ul>' + advice.map(a => `<li>${a}</li>`).join('') + '</ul>' : ''}
+        `;
+        feedbackDiv.classList.add(statusClass);
+    }
+    window.checkSymptoms = checkSymptoms;
+
+    // ===================================
+    // POMODORO TIMER LOGIC (Retained)
+    // ===================================
+    const timerDisplay = document.getElementById('timer-display');
+    const startBtn = document.getElementById('start-btn');
+    const pauseBtn = document.getElementById('pause-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    let totalSeconds = 25 * 60; 
+    let intervalId = null;
+    let isPaused = false;
+
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = seconds % 60;
+        return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+    }
+
+    function updateTimer() {
+        if (totalSeconds <= 0) {
+            clearInterval(intervalId);
+            timerDisplay.innerText = "DONE! Take a break.";
+            startBtn.style.display = 'inline-block';
+            pauseBtn.style.display = 'none';
+            totalSeconds = 25 * 60; 
+
+            if ('Notification' in window && Notification.permission === "granted") {
+                new Notification("Time's Up!", {
+                    body: "Your focus session is complete. Time for a mindful break!",
+                    icon: '🍅'
+                });
+            }
+            return;
+        }
+        totalSeconds--;
+        timerDisplay.innerText = formatTime(totalSeconds);
+    }
+
+    startBtn.addEventListener('click', () => {
+        if (!intervalId || isPaused) {
+            intervalId = setInterval(updateTimer, 1000);
+            startBtn.style.display = 'none';
+            pauseBtn.style.display = 'inline-block';
+            pauseBtn.innerText = 'Pause';
+            isPaused = false;
+        }
+    });
+
+    pauseBtn.addEventListener('click', () => {
+        clearInterval(intervalId);
+        intervalId = null;
+        pauseBtn.innerText = 'Resume';
+        isPaused = true;
+    });
+
+    resetBtn.addEventListener('click', () => {
+        clearInterval(intervalId);
+        intervalId = null;
+        totalSeconds = 25 * 60;
+        timerDisplay.innerText = formatTime(totalSeconds);
+        startBtn.style.display = 'inline-block';
+        pauseBtn.style.display = 'none';
+        isPaused = false;
+    });
+    
+    if ('Notification' in window && Notification.permission !== 'granted') {
+        Notification.requestPermission();
+    }
+
+    // ===================================
+    // HYDRATION TRACKER LOGIC (Retained)
+    // ===================================
+    let waterGlasses = 0;
+    const waterCountDisplay = document.getElementById('water-count');
+    const waterMessageDisplay = document.getElementById('water-message');
+    const targetGlasses = 8; 
+
+    function addWater() {
+        waterGlasses++;
+        waterCountDisplay.innerText = waterGlasses;
+        updateWaterMessage();
+    }
+
+    function resetWater() {
+        waterGlasses = 0;
+        waterCountDisplay.innerText = waterGlasses;
+        updateWaterMessage();
+    }
+
+    function updateWaterMessage() {
+        if (waterGlasses >= targetGlasses) {
+            waterMessageDisplay.innerText = 'Goal achieved! You are wonderfully hydrated.';
+            waterMessageDisplay.style.color = 'var(--accent-color)';
+        } else if (waterGlasses > 0) {
+            const remaining = targetGlasses - waterGlasses;
+            waterMessageDisplay.innerText = `${remaining} glasses left to hit your goal!`;
+            waterMessageDisplay.style.color = 'var(--mental-color)';
+        } else {
+             waterMessageDisplay.innerText = 'Start sipping!';
+             waterMessageDisplay.style.color = 'var(--primary-text)';
+        }
+    }
+    window.addWater = addWater;
+    window.resetWater = resetWater;
+</script>
+</body>
+</html>
